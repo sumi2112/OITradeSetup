@@ -1,0 +1,37 @@
+plugins {
+    id 'org.springframework.boot' version '3.2.0'
+    id 'io.spring.dependency-management' version '1.1.4'
+    id 'java'
+}
+compileJava.options.encoding = 'UTF-8'
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+group = 'com.shreehari'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '3.2.0'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '3.2.0'
+
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.10.1'
+    implementation group: 'net.sourceforge.argparse4j', name: 'argparse4j', version: '0.9.0'
+    implementation group: 'com.opencsv', name: 'opencsv', version: '5.9'
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
+
+    testImplementation 'org.awaitility:awaitility:4.2.0'
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
